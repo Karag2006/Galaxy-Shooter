@@ -18,11 +18,18 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _lives = 3;
     private SpawnManager _spawnManager;
+
     [SerializeField]
     private bool _tripleshotActive = false;
     [SerializeField]
     private float _tripleshotPowerDownTimer = 5f;
 
+    [SerializeField]
+    private bool _speedBoostActive = false;
+    [SerializeField]
+    private float _speedBoostPowerDownTimer = 3f;
+    [SerializeField]
+    private float _speedBoostStrength = 3.8f;
 
 
 
@@ -53,9 +60,12 @@ public class Player : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
+        float currentSpeed = _speed;
+        if (_speedBoostActive) {
+          currentSpeed += _speedBoostStrength;
+        }
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
-        transform.Translate(direction * _speed * Time.deltaTime);
+        transform.Translate(direction * currentSpeed * Time.deltaTime);
 
         if (transform.position.y >= 0)
         {
@@ -116,5 +126,19 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_tripleshotPowerDownTimer);
         _tripleshotActive = false;
+    }
+
+
+    public void ActivateSpeedBoost()
+    {
+        _speedBoostActive = true;
+
+        StartCoroutine(SpeedBoostPowerDownRoutine());
+    }
+
+    IEnumerator SpeedBoostPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(_speedBoostPowerDownTimer);
+        _speedBoostActive = false;
     }
 }

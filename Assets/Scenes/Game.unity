@@ -166,7 +166,7 @@ MonoBehaviour:
   _spawnHeight: 9
   _spawnTime: 5
   _enemyPrefab: {fileID: 0}
-  _powerupPrefab: {fileID: 0}
+  _powerups: []
   _enemyContainer: {fileID: 0}
 --- !u!1 &89476298
 GameObject:
@@ -284,8 +284,9 @@ MonoBehaviour:
   _spawnTime: 5
   _enemyPrefab: {fileID: 2842811383293727619, guid: 493154be5678021e18919d14b2948e6b,
     type: 3}
-  _powerupPrefab: {fileID: 7840472874177337122, guid: 62f26c01414170c3c9329eab59d378c2,
-    type: 3}
+  _powerups:
+  - {fileID: 7840472874177337122, guid: 62f26c01414170c3c9329eab59d378c2, type: 3}
+  - {fileID: 3903739983201233482, guid: fa4f8e8db46ce32c88e843241d8bdb61, type: 3}
   _enemyContainer: {fileID: 29904250}
 --- !u!4 &457627518
 Transform:
@@ -423,6 +424,9 @@ MonoBehaviour:
   _lives: 3
   _tripleshotActive: 0
   _tripleshotPowerDownTimer: 5
+  _speedBoostActive: 0
+  _speedBoostPowerDownTimer: 3
+  _speedBoostStrength: 3.8
 --- !u!212 &1936772544
 SpriteRenderer:
   m_ObjectHideFlags: 0
