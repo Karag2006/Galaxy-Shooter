@@ -16,22 +16,13 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _enemyContainer;
 
-
     private bool _stopSpawning = false;
-
-
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnPowerupRoutine());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     IEnumerator SpawnEnemyRoutine()
@@ -59,8 +50,6 @@ public class SpawnManager : MonoBehaviour
 
         }
     }
-
-
 
     public void OnPlayerDeath()
     {
