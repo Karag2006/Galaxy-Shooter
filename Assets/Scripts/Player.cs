@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
     [SerializeField]
+    private GameObject _shieldVisualizer;
+    [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
     private GameObject _tripleShotPrefab;
@@ -30,6 +32,9 @@ public class Player : MonoBehaviour
     private float _speedBoostPowerDownTimer = 3f;
     [SerializeField]
     private float _speedBoostStrength = 3.8f;
+
+    [SerializeField]
+    private bool _shieldActive = false;
 
 
 
@@ -106,6 +111,13 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
+        if (_shieldActive)
+        {
+            _shieldActive = false;
+            _shieldVisualizer.SetActive(false);
+            return;
+        }
+
         _lives--;
 
         if (_lives < 1)
@@ -140,5 +152,11 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_speedBoostPowerDownTimer);
         _speedBoostActive = false;
+    }
+
+    public void ActivateShield()
+    {
+        _shieldActive = true;
+        _shieldVisualizer.SetActive(true);
     }
 }

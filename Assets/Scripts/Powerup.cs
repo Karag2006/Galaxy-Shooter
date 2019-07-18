@@ -39,7 +39,7 @@ public class Powerup : MonoBehaviour
                     player.ActivateSpeedBoost();
                     break;
                   case 2:
-                    Debug.Log("Collected Shields");
+                    player.ActivateShield();
                     break;
                 }
             }
