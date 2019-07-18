@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
 
             float rXPosition = Random.Range(-8f, 8f);
             Vector3 SpawnPosition = new Vector3(rXPosition, _spawnHeight, 0);
-            int randomPowerup = Random.Range(0, 2);
+            int randomPowerup = Random.Range(0, 3);
             Instantiate(_powerups[randomPowerup], SpawnPosition, Quaternion.identity);
 
         }
