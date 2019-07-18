@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private int _lives = 3;
+    [SerializeField]
+    private int _score = 0;
+
+    private UIManager _uiManager;
+
     private SpawnManager _spawnManager;
 
     [SerializeField]
@@ -48,6 +53,13 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Spawn_Manager was Null");
         }
+
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        if (_uiManager == null)
+        {
+            Debug.LogError("UIManager was Null");
+        }
+
     }
 
     // Update is called once per frame
@@ -158,5 +170,11 @@ public class Player : MonoBehaviour
     {
         _shieldActive = true;
         _shieldVisualizer.SetActive(true);
+    }
+
+    public void AddScore(int points)
+    {
+        _score += points;
+        _uiManager.UpdateScore(_score);
     }
 }
