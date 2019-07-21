@@ -7,16 +7,19 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Text _scoreText;
-
+    [SerializeField]
+    private Text _gameOverText;
 
     [SerializeField]
     private Sprite[] _liveSprites;
     [SerializeField]
     private Image _LivesImage;
 
+
+
     void Start()
     {
-
+        _gameOverText.gameObject.SetActive(false);
         _scoreText.text = "Score: " + 0;
     }
 
@@ -31,5 +34,10 @@ public class UIManager : MonoBehaviour
       //give it the new one
 
       _LivesImage.sprite = _liveSprites[currentLives];
+      if (currentLives <= 0)
+      {
+          _gameOverText.gameObject.SetActive(true);
+      }
+
     }
 }
